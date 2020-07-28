@@ -433,7 +433,10 @@ function draw(){
     }
     
     if(linha==1){
-      alert("teste")
+      textSize(30);
+      fill(2);
+      noStroke();
+      text("teste",500,500);
       strokeWeight(12.0);
       line(10,10,10,310);
       winner()
