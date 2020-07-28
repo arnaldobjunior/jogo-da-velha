@@ -60,6 +60,13 @@ function mousePressed() {
   }  
   
 }
+function winner(){
+  if(jogador == 1){
+    alert("vc ganhou")
+  }else{
+    alert(" o pc")
+  }
+}
 function cruzar(){
   if(matriz[0][0] && matriz[0][1] && matriz[0][2] != "."){
     result()
@@ -161,11 +168,12 @@ function vazia(){
     }
   }else{
     jogador = 1
-    alert("É sua vez")
+    if(matriz[0][0]=='.'|| matriz[0][1]=='.'|| matriz[0][2]=='.'|| matriz[1][0]=='.'|| matriz[1][1]=='.'|| matriz[1][2]=='.'|| matriz[2][0]=='.'|| matriz[2][1]=='.'|| matriz[2][2]=='.'){
+      alert("É sua vez")
+    }
+    
   }
 }
-
-
 
 function draw(){
   
@@ -237,7 +245,27 @@ function draw(){
     rect(1,1,550,430,10);
     textSize(18);
     fill("white")
+    stroke(100)
     text('Olá, tripulante! Vamos iniciar o jogo? Para começar é preciso clicar com seu mouse no botão começar e selecionar o tipo de operação matemática que a sua prof pediu. Depois de selecionar o tipo do jogo, você, tripulante, vai selecionar o número desejado e clicar em "finalizar". Agora é vez do pirata robô jogar, ele vai sortear um número para tentar atrapalhar o seu jogo, mas você não vai desistir, né? Quando o pirata finalizar a jogada, será sua vez novamente, o jogo só termina quando o pirata ou o tripulante completa o cruzarado na diagonal, horizontal ou vertical. Cuidado com o empate, caso contrário, você terá que dividir o tesouro. :)',25,40,500,430);
+    fill("#318aa9");
+    rect(200,350,150,50,10);
+    textSize(40);
+    fill("#08475d");
+    text("Voltar",275,390);
+    if(mouseX > 200 && mouseX < 200 + 150 && mouseY > 330 && mouseY < 330 + 100){
+      stroke(200);
+      fill("#08475d");
+      rect(200,350,150,50,10);
+      textSize(40);
+      fill("white");
+      text("Voltar",275,390);
+      if (mouseIsPressed){
+        ccanvas = createCanvas(900,700);
+        canvas.position(10,10);
+        tela =1
+      }
+    }
+   
   }else if(tela==4){
     canvas_jogo = createCanvas(450,440);
     canvas_jogo.position(250,80);
@@ -405,9 +433,10 @@ function draw(){
     }
     
     if(linha==1){
-      alert("fdf")
-      strokeWeight(12.0)
-      line(10,10,10,310)
+      alert("teste")
+      strokeWeight(12.0);
+      line(10,10,10,310);
+      winner()
       
     }else if(linha==2){
       strokeWeight(12.0)
@@ -457,6 +486,7 @@ function draw(){
       }
     }
     }
+
   }
 }
 
