@@ -61,10 +61,12 @@ function mousePressed() {
   
 }
 function winner(){
-  if(jogador == 1){
-    alert("vc ganhou")
+  if(jogador ===0){
+    alert("Parabéns,você ganhou! :)")
+    tela=1
   }else{
-    alert(" o pc")
+    alert("O computador venceu! :(")
+    tela=1
   }
 }
 function cruzar(){
@@ -163,7 +165,7 @@ function vazia(){
       }
 
     }else{
-      alert("Empatou!")
+     
       linha = 9
     }
   }else{
@@ -181,12 +183,14 @@ function draw(){
   textAlign(CENTER);
   textSize(30);
   if(tela==1){
-
+    canvas = createCanvas(900,700);
+    canvas.position(10,10);
     stroke(200);
     fill("#318aa9");
     rect(xMenu, yMenu1,largura,altura,100);
     fill("#08475d");
     stroke(20)
+    textSize(40)
     text("Começar",450,120);
     if(mouseX > xMenu && mouseX < xMenu + largura && mouseY > yMenu1 && mouseY < yMenu1 + altura){
       stroke(500);
@@ -433,43 +437,47 @@ function draw(){
     }
     
     if(linha==1){
-      textSize(30);
-      fill(2);
-      noStroke();
-      text("teste",500,500);
-      strokeWeight(12.0);
-      line(10,10,10,310);
+      strokeWeight(12.0)
+      fill("white")
+      line(10,50,310,50)
       winner()
-      
     }else if(linha==2){
       strokeWeight(12.0)
       fill("white")
       line(10,160,310,160)
+      winner()
     }else if(linha==3){
       strokeWeight(12.0)
       fill("white")
       line(10,270,310,270)
+      winner()
     }else if(linha==4){
       strokeWeight(12.0)
       fill("white")
       line(50,10,50,310)
+      winner()
     }else if(linha==5){
       strokeWeight(12.0)
       fill("white")
       line(160,10,160,310)
+      winner()
     }else if(linha==6){
       strokeWeight(12.0)
       fill("white")
       line(270,10,270,310)
+      winner()
     }else if(linha==7){
       strokeWeight(12.0)
       fill("white")
       line(10,10,315,310)
+      winner()
     }else if(linha==8){
       strokeWeight(12.0)
       fill("white")
       line(20,300,300,20)
+      winner()
     }else if(linha==9){
+      alert("Empatou !")
       stroke(200);
       fill("#318aa9");
       rect(2,330,320,100,10);
@@ -477,19 +485,26 @@ function draw(){
       fill("#08475d");
       text("Recomeçar",160,400);
       if(mouseX > 2 && mouseX < 2 + 320 && mouseY > 330 && mouseY < 330 + 100){
-      stroke(200);
-      fill("#08475d");
-      rect(2,330,320,100,10);
-      textSize(50);
-      fill("white");
-      text("Recomeçar",160,400);
-      if (mouseIsPressed){
-        jogador = 0
+        stroke(200);
+        fill("#08475d");
+        rect(2,330,320,100,10);
+        textSize(50);
+        fill("white");
+        text("Recomeçar",160,400);
+        if (mouseIsPressed){
+          jogador = 0
+          matriz =[
+                    ['.','.','.'],
+                    ['.','.','.'],
+                    ['.','.','.'],
+                    ['pc','pc','pc']
+                ];
+          tela = 1
+          linha=0
         
+        }
       }
     }
-    }
-
   }
 }
 
